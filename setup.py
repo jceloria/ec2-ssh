@@ -43,6 +43,7 @@ Changelog
 * 1.1.1 - Add line echoing host before establishing SSH connection
 * 1.2 - Merged pull requests to add region and tag support
 * 1.2.1 - Fix issue when ec2-host finds one offline instance with same name as an online instance
+* 1.2.2 - Forked from 1.2.1 with fixed ec2-ssh commend not honoring ~/.ssh/config
 """
 
 
@@ -52,9 +53,9 @@ from setuptools import setup
 
 setup(
     name = "ec2-ssh",
-    version = "1.2.1",
-    author = "Shayne Sweeney",
-    author_email = "shayne@instagram.com",
+    version = "1.2.2",
+    author = "John Celoria",
+    author_email = "john_celoria@intuit.com",
     description = "SSH into EC2 instances via tag name",
     long_description = __doc__,
     license = "MIT",
