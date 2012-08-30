@@ -60,7 +60,7 @@ host=$(eval "$cmd $inst")
 
 # pass all other parameters (${@:2}) to ssh allowing
 # things like: ec2-ssh nginx uptime
-cmd="mkdir -p ~/.bash.d; echo PI='${inst}'> ~/.bash.d/ec2.sh; bash -l"
+cmd="mkdir -p ~/.bash.d; echo HN='${inst}'> ~/.bash.d/ec2.sh; bash -l"
 
 test "${@:2}" && cmd="${@:2}"
 
