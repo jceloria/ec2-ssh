@@ -56,7 +56,7 @@ else
 fi
 
 # get host from ec2-host command
-host=$(eval "$cmd $inst")
+host=$(eval "$cmd '$inst'")
 
 # pass all other parameters (${@:2}) to ssh allowing
 # things like: ec2-ssh nginx uptime
@@ -64,6 +64,8 @@ cmd="mkdir -p ~/.bash.d; echo HN='${inst}'> ~/.bash.d/ec2.sh; bash -l"
 
 test "${@:2}" && cmd="${@:2}"
 
+[[ -n $AWS_SSH_KEY ]] && ssh='ssh -t -i $AWS_SSH_KEY' || ssh='ssh -t'
+
 [[ -n $user ]] && conn="$user@$host" || conn="$host"
 
-[[ -n $host ]] && echo "Connecting to $host." && exec sh -c "ssh -t $conn '$cmd'"
+[[ -n $host ]] && echo "Connecting to $host." && exec sh -c "$ssh $conn '$cmd'"
